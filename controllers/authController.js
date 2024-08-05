@@ -57,6 +57,7 @@ class authController {
       const token = jwt.sign({ id: newUser.id }, JWT_SECRET, { expiresIn: "1h" })
       return res.status(201).json(helpers.responBody('Success', { data: newUser, token: token }))
     } catch (error) {
+      console.error(error);
       next(error)
     }
   }
