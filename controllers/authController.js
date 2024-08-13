@@ -93,6 +93,7 @@ class authController {
 
       return res.status(200).json(helpers.responBody('Success', { data: req.session.user, token: token }))
     } catch (error) {
+      console.error(error)
       next(error)
     }
   }
