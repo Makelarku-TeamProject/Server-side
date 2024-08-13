@@ -44,3 +44,26 @@ describe('houseController getAllHouse function', () => {
         });
     });
 })
+
+describe('houseController getHousewithJoin function', () => {
+    beforeEach(() => {
+        houseModel.getAllHousewithjoin.mockImplementation(()=> [{}]);
+        helpers.responBody.mockImplementation(() => ({
+            status: 'success',
+            data: [{}]
+        }));
+    });
+
+    test('return all house', async () => {
+        const req = mockRequest();
+        const res = mockResponse();
+
+        await houseController.getHousewithJoin(req, res); 
+
+        expect(res.status).toBeCalledWith(200);
+        expect(res.json).toBeCalledWith({
+            status: 'success',
+            data: [{}]
+        });
+    });
+})

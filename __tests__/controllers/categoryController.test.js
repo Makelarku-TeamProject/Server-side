@@ -42,3 +42,27 @@ describe('categoriesController getAllCategories function', () => {
         });
     });
 })
+
+
+describe('categoriesController createCategory function', () => {
+    beforeEach(() => {
+        categoryModel.createCategory.mockImplementation(()=> [{}]);
+        helpers.responBody.mockImplementation(() => ({
+            status: 'success',
+            data: [{}]
+        }));
+    });
+
+    test('return all categories', async () => {
+        const req = mockRequest();
+        const res = mockResponse();
+
+        await categoryController.createCategory(req, res);
+
+        expect(res.status).toBeCalledWith(201);
+        expect(res.json).toBeCalledWith({
+            status: 'success',
+            data: [{}]
+        });
+    });
+})
