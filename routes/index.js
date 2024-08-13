@@ -6,6 +6,15 @@ const authRoutes = require('./auth')
 const sliderRoutes = require('./slider')
 
 // TODO : restfull API
+/**
+ * @swagger
+ * /api/v1/categories:
+ *   get:
+ *     summary: Get all categories
+ *     responses:
+ *       200:
+ *         description: A list of categories
+ */
 routes.use('/api/v1/categories', categoryRoutes)
 routes.use('/api/v1/auth', authRoutes)
 routes.use('/api/v1/house', houseRoutes)
