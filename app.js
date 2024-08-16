@@ -8,8 +8,10 @@ const pgSession = require('connect-pg-simple')(session)
 const routes = require('./routes')
 const errorHandler = require('./middlewares/errorHandler/errorHandler')
 const { Pool } = require('pg')
-const swaggerJsdoc = require('swagger-jsdoc');
+// const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerJson = require('./swagger/openapi1.json')
 const swaggerUi = require('swagger-ui-express');
+
 
 dotenv.config()
 
@@ -41,26 +43,34 @@ app.use(session({
     }
 }));
 
-// * Swagger configuration
-const swaggerOptions = {
-    swaggerDefinition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'My Express API',
-            version: '1.0.0',
-            description: 'API documentation for my Express application',
-        },
-        servers: [
-            {
-                url: `http://localhost:${process.env.PORT}`, 
-            },
-        ],
-    },
-    apis: ['./routes/index.js'], 
-};
+// * Swagger Alwy Test
 
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.get('/test', (req, res) => {
+    res.send('Hello')
+})
+app.use('/documents', swaggerUi.serve, swaggerUi.setup(swaggerJson))
+
+
+// * Swagger configuration
+// const swaggerOptions = {
+//     swaggerDefinition: {
+//         openapi: '3.0.0',
+//         info: {
+//             title: 'My Express API',
+//             version: '1.0.0',
+//             description: 'API documentation for my Express application',
+//         },
+//         servers: [
+//             {
+//                 url: `http://localhost:${process.env.PORT}`, 
+//             },
+//         ],
+//     },
+//     apis: ['./routes/index.js'], 
+// };
+
+// const swaggerDocs = swaggerJsdoc(swaggerOptions);
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(routes)
 
