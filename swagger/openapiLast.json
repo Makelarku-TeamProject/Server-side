@@ -1,0 +1,1630 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Makelarku Docs - MakAPI 1.0",
+    "description": "This is a Makelarku Documentation based on the MakAPI 1.0 ",
+    "contact": {
+      "email": "developer@makelarku.id"
+    },
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3030/api/v1",
+      "description": "Back End Server (uses test data)"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Front End Server (uses test data)"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Everything about Authentication"
+    },
+    {
+      "name": "categories",
+      "description": "Everything about Categories"
+    },
+    {
+      "name": "house",
+      "description": "Operations about House"
+    },
+    {
+      "name": "slider",
+      "description": "Operations about Slider"
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Digunakan untuk authentication register",
+        "requestBody": {
+          "description": "Mendapatkan request body dari user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegister"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResUserRegister"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "408": {
+            "description": "Timeout"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Digunakan untuk authentication login",
+        "requestBody": {
+          "description": "mendapatkan data user berdasarkan email dengan model user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResUserLogin"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "408": {
+            "description": "Timeout"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Digunakan untuk authentication register",
+        "description": "tes",
+        "operationId": "testestes",
+        "requestBody": {
+          "description": "Mendapatkan request body dari user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegister"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResUserRegister"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "408": {
+            "description": "Timeout"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/slider": {
+      "get": {
+        "tags": [
+          "slider"
+        ],
+        "summary": "Digunakan untuk get All Slider",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResGetSlider"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "slider"
+        ],
+        "summary": "Digunakan untuk create Slider",
+        "requestBody": {
+          "description": "Create Slider",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSlider"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Slider Created Sucessfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResPostSlider"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "408": {
+            "description": "Timeout"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/slider/:id": {
+      "get": {
+        "tags": [
+          "slider"
+        ],
+        "summary": "Digunakan untuk check slider by ID",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResGetSliderID"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Slider Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "slider"
+        ],
+        "summary": "Digunakan untuk update Slider",
+        "requestBody": {
+          "description": "Create Slider",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSlider"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Slider Updated Succesfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResPostSlider"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Slider Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "slider"
+        ],
+        "summary": "Digunakan untuk delete slider",
+        "responses": {
+          "200": {
+            "description": "Slider Deleted Succesfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResDelSlider"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Slider Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Digunakan untuk get All Categories",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResGetCategories"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Digunakan untuk create Categories",
+        "requestBody": {
+          "description": "Create Categories",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategories"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResPostCategories"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Category Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/categories/:id": {
+      "get": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Digunakan untuk check categories by ID",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResGetCategoriesID"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Categories Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Digunakan untuk update categories",
+        "requestBody": {
+          "description": "Update Categories",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchCategories"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResPatchCategories"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Categories Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Digunakan untuk delete categories",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResDelCategories"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Categories Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/house": {
+      "get": {
+        "tags": [
+          "house"
+        ],
+        "summary": "Digunakan untuk get All houses",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResGetHouse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "house"
+        ],
+        "summary": "Digunakan untuk create houses",
+        "requestBody": {
+          "description": "Create House",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateHouse"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResPostHouse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/house/:id": {
+      "get": {
+        "tags": [
+          "house"
+        ],
+        "summary": "Digunakan untuk check houses by ID",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResGetHouseID"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "house"
+        ],
+        "summary": "Digunakan untuk update houses",
+        "requestBody": {
+          "description": "Update House",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchCategories"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResPutHouse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "house"
+        ],
+        "summary": "Digunakan untuk delete houses",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResDelHouse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error deleting house and images"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRegister": {
+        "required": [
+          "username",
+          "email",
+          "password",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "Azzasafah"
+          },
+          "email": {
+            "type": "string",
+            "example": "azzas@mail.com"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "example": "customer"
+          }
+        }
+      },
+      "ResUserRegister": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/Data"
+          }
+        }
+      },
+      "Data": {
+        "required": [
+          "data",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Data2"
+          },
+          "token": {
+            "$ref": "#/components/schemas/Token"
+          }
+        }
+      },
+      "Data2": {
+        "required": [
+          "username",
+          "password",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "Azzasafah"
+          },
+          "password": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "example": "azzas@mail.com"
+          }
+        }
+      },
+      "Token": {
+        "required": [
+          "token"
+        ],
+        "type": "object",
+        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRmMmRmOWE4LTc2OTAtNDA0OS04YzQ3LWNiZjcyMjhlY2EyYyIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MjM2MTAzODIsImV4cCI6MTcyMzYxMzk4Mn0.oVXoPVEkdog_nVjDx4lM4rrORovqY9_2dqXQBO9KiYg"
+      },
+      "UserLogin": {
+        "required": [
+          "username",
+          "email",
+          "password",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "azzas@mail.com"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "ResUserLogin": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/Data3"
+          }
+        }
+      },
+      "Data3": {
+        "required": [
+          "data",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Data4"
+          },
+          "token": {
+            "$ref": "#/components/schemas/Token"
+          }
+        }
+      },
+      "Data4": {
+        "required": [
+          "username",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "admin"
+          },
+          "role": {
+            "type": "string",
+            "example": "admin"
+          }
+        }
+      },
+      "ResGetSlider": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataSlider"
+          }
+        }
+      },
+      "DataSlider": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "cloudinary id": {
+              "type": "string"
+            },
+            "image_url": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": 1,
+            "name": "Slider 1",
+            "cloudinary id": "slider/mpolwjjswsvnyugbus7c",
+            "image_url": "https://res.cloudinary.com/dlnlr5bfg/image/upload/v1720679670/slider/mpolwjjswsvnyugbus7c.png",
+            "created_at": "2024-07-11T06:34:30.628Z",
+            "updated_at": "2024-07-11T06:34:30.628Z"
+          },
+          {
+            "id": 2,
+            "name": "Slider 2",
+            "cloudinary id": "slider/od6fnmhbfyjqifczafdd",
+            "image_url": "https://res.cloudinary.com/dlnlr5bfg/image/upload/v1720963037/slider/od6fnmhbfyjqifczafdd.png",
+            "created_at": "2024-07-14T13:17:17.883Z",
+            "updated_at": "2024-07-14T13:17:17.883Z"
+          }
+        ]
+      },
+      "ResGetSliderID": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataSlider1"
+          }
+        }
+      },
+      "DataSlider1": {
+        "required": [
+          "id",
+          "name",
+          "cloudinary id",
+          "image_url",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Slider 1"
+          },
+          "cloudinary id": {
+            "type": "string",
+            "example": "slider/mpolwjjswsvnyugbus7c"
+          },
+          "image_url": {
+            "type": "string",
+            "example": "https://res.cloudinary.com/dlnlr5bfg/image/upload/v1720679670/slider/mpolwjjswsvnyugbus7c.png"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2024-07-11T06:34:30.628Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2024-07-11T06:34:30.628Z"
+          }
+        }
+      },
+      "CreateSlider": {
+        "required": [
+          "name",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Slider 1"
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "example": "Slider 1"
+          }
+        }
+      },
+      "ResPostSlider": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Image file required",
+              "Slider not found"
+            ]
+          }
+        }
+      },
+      "ResDelSlider": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Slider deleted successfully",
+              "Slider not found"
+            ]
+          },
+          "data": {
+            "type": "string",
+            "example": "1"
+          }
+        }
+      },
+      "ResGetCategories": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status get categories",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataCategories"
+          }
+        }
+      },
+      "DataCategories": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": 1,
+            "name": "Jual",
+            "created_at": "2024-08-08T10:17:36.589Z",
+            "updated_at": "2024-08-08T10:17:36.589Z"
+          },
+          {
+            "id": 2,
+            "name": "Sewa",
+            "created_at": "2024-08-08T10:17:36.589Z",
+            "updated_at": "2024-08-08T10:17:36.589Z"
+          }
+        ]
+      },
+      "CreateCategories": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Apartement"
+          }
+        }
+      },
+      "ResPostCategories": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataPostCategories"
+          }
+        }
+      },
+      "DataPostCategories": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": 1,
+            "name": "Apartment",
+            "created_at": "2024-08-17T08:36:32.672Z",
+            "updated_at": "2024-08-17T08:36:32.672Z"
+          }
+        ]
+      },
+      "ResGetCategoriesID": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataCategories1"
+          }
+        }
+      },
+      "DataCategories1": {
+        "required": [
+          "id",
+          "name",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 4
+          },
+          "name": {
+            "type": "string",
+            "example": "Jual"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2024-08-08T10:17:36.589Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2024-08-08T10:17:36.589Z"
+          }
+        }
+      },
+      "PatchCategories": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Hotel"
+          }
+        }
+      },
+      "ResPatchCategories": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status get categories",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataPatchCategories"
+          }
+        }
+      },
+      "DataPatchCategories": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": 5,
+            "name": "Hotel",
+            "created_at": "2024-08-08T10:17:36.589Z",
+            "updated_at": "2024-08-08T10:17:36.589Z"
+          }
+        ]
+      },
+      "ResDelCategories": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "type": "string",
+            "example": "1"
+          }
+        }
+      },
+      "ResGetHouse": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status get categories",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataHouse"
+          }
+        }
+      },
+      "DataHouse": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "num_rooms": {
+              "type": "integer"
+            },
+            "sq_ft": {
+              "type": "integer"
+            },
+            "location": {
+              "type": "string"
+            },
+            "price": {
+              "type": "integer"
+            },
+            "description": {
+              "type": "string"
+            },
+            "categoryId": {
+              "type": "integer"
+            },
+            "userId": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "houseimagesId": {
+              "type": "string"
+            },
+            "images": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        },
+        "example": [
+          {
+            "id": 3,
+            "name": "Rumah Bagus",
+            "num_rooms": 4,
+            "sq_ft": 250,
+            "location": "Tangerang",
+            "price": 10000,
+            "description": "ya udah sayang deh!!!",
+            "categoryId": 4,
+            "userId": "4f2df9a8-7690-4049-8c47-cbf7228eca2c",
+            "created_at": "2024-08-08T10:17:36.619Z",
+            "updated_at": "2024-08-08T10:17:36.619Z",
+            "houseimagesId": [
+              5
+            ],
+            "images": [
+              "https//res.cloudinary.com/dlnlr5bfg/image/upload/v1719808337/thzafgayta8bttmpcbg4.png"
+            ]
+          }
+        ]
+      },
+      "ResGetHouseID": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "Success",
+              "Failed"
+            ]
+          }
+        }
+      },
+      "ResPutHouse": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status update house",
+            "enum": [
+              "House updated Sucessfully",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataPutHouse"
+          }
+        }
+      },
+      "DataPutHouse": {
+        "required": [
+          "house",
+          "newImageUrls"
+        ],
+        "type": "object",
+        "properties": {
+          "house": {
+            "type": "string",
+            "example": []
+          },
+          "newImageUrls": {
+            "type": "string",
+            "example": []
+          }
+        }
+      },
+      "ResDelHouse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "House and associated images deleted successfully",
+              "Error deleting house and images"
+            ]
+          }
+        }
+      },
+      "CreateHouse": {
+        "required": [
+          "id",
+          "name",
+          "num_rooms",
+          "sq_ft",
+          "location",
+          "price",
+          "description",
+          "categoryId",
+          "house_image"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "num_rooms": {
+            "type": "integer"
+          },
+          "sq_ft": {
+            "type": "integer"
+          },
+          "location": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "integer"
+          },
+          "house_image": {
+            "type": "string",
+            "format": "binary"
+          }
+        },
+        "example": [
+          {
+            "id": 11,
+            "name": "Honey",
+            "num_rooms": 1,
+            "sq_ft": 20,
+            "location": "Tangerang",
+            "price": 300,
+            "description": "test123",
+            "categoryId": 4,
+            "userId": "4f2df9a8-7690-4049-8c47-cbf7228eca2c",
+            "created_at": "2024-08-17T11:18:13.834Z",
+            "updated_at": "2024-08-17T11:18:13.834Z"
+          }
+        ]
+      },
+      "ResPostHouse": {
+        "required": [
+          "status",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status register",
+            "enum": [
+              "House created successfully",
+              "Failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/ResPostHouse1"
+          }
+        }
+      },
+      "ResPostHouse1": {
+        "required": [
+          "house",
+          "imageUrls"
+        ],
+        "type": "object",
+        "properties": {
+          "House": {
+            "$ref": "#/components/schemas/DataPostHouse"
+          },
+          "imageUrls": {
+            "$ref": "#/components/schemas/DataPostHouse1"
+          }
+        }
+      },
+      "DataPostHouse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "num_rooms": {
+            "type": "integer"
+          },
+          "sq_ft": {
+            "type": "integer"
+          },
+          "location": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "categoryId": {
+            "type": "integer"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "example": [
+          {
+            "id": 11,
+            "name": "Honey",
+            "num_rooms": 1,
+            "sq_ft": 20,
+            "location": "Tangerang",
+            "price": 300,
+            "description": "test123",
+            "categoryId": 4,
+            "userId": "4f2df9a8-7690-4049-8c47-cbf7228eca2c",
+            "created_at": "2024-08-17T11:18:13.834Z",
+            "updated_at": "2024-08-17T11:18:13.834Z"
+          }
+        ]
+      },
+      "DataPostHouse1": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "houseId": {
+                "type": "integer"
+              },
+              "cloudinary_id": {
+                "type": "string"
+              },
+              "image_url": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              }
+            }
+          },
+          "example": [
+            {
+              "id": 6,
+              "houseId": 11,
+              "cloudinary_id": "houses/flpjjmm6cq84r3yytddf",
+              "image_url": "https://res.cloudinary.com/dlnlr5bfg/image/upload/v1723893494/houses/flpjjmm6cq84r3yytddf.png",
+              "created_at": "2024-08-17T11:18:14.966Z",
+              "updated_at": "2024-08-17T11:18:14.966Z"
+            }
+          ]
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

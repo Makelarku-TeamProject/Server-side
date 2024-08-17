@@ -9,7 +9,7 @@ const routes = require('./routes')
 const errorHandler = require('./middlewares/errorHandler/errorHandler')
 const { Pool } = require('pg')
 // const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerJson = require('./swagger/openapi1.json')
+const swaggerJson = require('./swagger/openapiLast.json')
 const swaggerUi = require('swagger-ui-express');
 
 
